@@ -150,4 +150,24 @@ public class ProductService extends ServiceBase {
         ProductConverter.copyViewToModel(p, pv);
         em.getTransaction().commit();
     }
+
+    /**
+     * idを条件に在庫データを論理削除する
+     * @param id
+     */
+    public void destroy(Integer id) {
+
+        //idを条件に登録済みの商品情報を取得する
+        ProductView savedPrd = findOne(id);
+
+        //更新日時に現在時刻を設定する
+        LocalDateTime today = LocalDateTime.now();
+        savedPrd.setUpdatedAt(today);
+
+        //論理削除フラグをたてる
+        savedPrd.setObsoleteFlag(JpaConst.PRD_OBS_TRUE);
+
+        //更新処理を行う
+        update(savedPrd);
+    }
 }
