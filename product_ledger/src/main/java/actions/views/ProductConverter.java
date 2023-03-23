@@ -8,7 +8,7 @@ import constants.JpaConst;
 import models.Product;
 
 /**
- * 日報データのDTOモデル⇔Viewモデルの変換を行うクラス
+ * 商品データのDTOモデル⇔Viewモデルの変換を行うクラス
  *
  */
 public class ProductConverter {
@@ -27,13 +27,13 @@ public class ProductConverter {
                 pv.getContent(),
                 pv.getQuantity(),
                 pv.getObsoleteFlag() == null
-                    ? null
-                    : pv.getObsoleteFlag() == AttributeConst.PRD_OBS_TRUE.getIntegerValue()
-                    ? JpaConst.PRD_OBS_TRUE
-                    : JpaConst.PRD_OBS_FALSE,
-                    EmployeeConverter.toModel(pv.getEmployee()),
-                pv.getCreatedAt(),
-                pv.getUpdatedAt());
+                ? null
+                        : pv.getObsoleteFlag() == AttributeConst.PRD_OBS_TRUE.getIntegerValue()
+                        ? JpaConst.PRD_OBS_TRUE
+                                : JpaConst.PRD_OBS_FALSE,
+                                EmployeeConverter.toModel(pv.getEmployee()),
+                                pv.getCreatedAt(),
+                                pv.getUpdatedAt());
     }
 
     /**
