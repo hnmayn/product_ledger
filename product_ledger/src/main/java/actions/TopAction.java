@@ -44,7 +44,7 @@ public class TopAction extends ActionBase {
 
         // ログイン中の従業員が作成した商品データを、指定されたページ数の一覧画面に表示する分取得する
         int page = getPage();
-        List<ProductView> reports = service.getMinePerPage(loginEmployee, page);
+        List<ProductView> products = service.getMinePerPage(loginEmployee, page);
 
         // ログイン中の従業員が作成した商品データの件数を取得
         long myProductsCount = service.countAllMine(loginEmployee);

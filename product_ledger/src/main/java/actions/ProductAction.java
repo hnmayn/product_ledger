@@ -43,14 +43,14 @@ public class ProductAction extends ActionBase {
 
         // 指定されたページ数の一覧画面に表示する商品データを取得
         int page = getPage();
-        List<ProductView> reports = service.getAllPerPage(page);
+        List<ProductView> products = service.getAllPerPage(page);
 
         // 全商品データの件数を取得
         long productsCount = service.countAll();
 
-        putRequestScope(AttributeConst.PRODUCT, product); // 取得した商品データ
+        putRequestScope(AttributeConst.PRODUCT, products); // 取得した商品データ
         putRequestScope(AttributeConst.PRD_COUNT, productsCount); // 全ての商品データの件数
-        putRequestScope(AttributeConst.PAGE, page); //ページ数
+        putRequestScope(AttributeConst.PAGE, page); // ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
 
         // セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
@@ -139,7 +139,7 @@ public class ProductAction extends ActionBase {
      */
     public void show() throws ServletException, IOException {
 
-        //idを条件に商品データを取得する
+        // idを条件に商品データを取得する
         ProductView pv = service.findOne(toNumber(getRequestParam(AttributeConst.PRD_ID)));
 
         if(pv == null) {
@@ -195,8 +195,12 @@ public class ProductAction extends ActionBase {
 
             //入力された商品情報を設定する
             pv.setName(getRequestParam(AttributeConst.PRD_NAME));
-            toNumber(pv.setPrice(getRequestParam(AttributeConst.PRD_PRC)));
+            pv.setPrice(toNumber(getRequestParam(AttributeConst.PRD_PRC)));
+            pv.setSize(toNumber(getRequestParam(AttributeConst.PRD_SIZE)));
+            pv.setMaterial(getRequestParam(AttributeConst.PRD_MTRL));
             pv.setContent(getRequestParam(AttributeConst.PRD_CONTENT));
+            pv.setQuantity(toNumber(getRequestParam(AttributeConst.PRD_QUANTITY)));
+            pv.setObsoleteFlag(toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)));
 
             //商品データを更新する
             List<String> errors = service.update(pv);
@@ -219,6 +223,8 @@ public class ProductAction extends ActionBase {
                 //一覧画面にリダイレクト
                 redirect(ForwardConst.ACT_PRD, ForwardConst.CMD_INDEX);
             }
+
+
         }
     }
 }
