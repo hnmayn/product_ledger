@@ -19,10 +19,11 @@ public enum MessageConst {
     P_DELETED("廃盤にしました"),
 
     // バリデーション
-    E_NONAME("氏名を入力してください。"),
-    E_NOPASSWORD("パスワードを入力してください。"),
-    E_NOEMP_CODE("ユーザー番号を入力してください。"),
-    E_EMP_CODE_EXIST("入力されたユーザー番号の情報は既に存在しています。"),
+    U_NONAME("氏名を入力してください。"),
+    U_NOCOMPANY("所属会社を入力してください。"),
+    U_NOPASSWORD("パスワードを入力してください。"),
+    U_NOUSER_CODE("ユーザー番号を入力してください。"),
+    U_USER_CODE_EXIST("入力されたユーザー番号の情報は既に存在しています。"),
     P_NONAME("商品名を入力してください。"),
     P_NOPRICE("価格を入力してください。"),
     P_NOSIZE("サイズを入力してください"),

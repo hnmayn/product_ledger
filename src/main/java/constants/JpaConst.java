@@ -20,16 +20,13 @@ public interface JpaConst {
     String USER_COL_NAME = "name"; // 氏名
     String USER_COL_COMPANY = "company"; // 所属会社
     String USER_COL_PASS = "password"; // パスワード
-    String EMP_COL_ADMIN_FLAG = "emp_admin_flag"; // 従業員管理者権限
-    String CUS_COL_ADMIN_FLAG = "cus_admin_flag"; // 得意先管理者権限
+    String USER_COL_ADMIN_FLAG = "admin_flag"; // 従業員管理者権限
     String USER_COL_CREATED_AT = "created_at"; // 登録日時
     String USER_COL_UPDATED_AT = "updated_at"; // 更新日時
     String USER_COL_DELETE_FLAG = "delete_flag"; // 削除フラグ
 
-    int EMP_ROLE_ADMIN = 1; // 従業員管理者権限ON(管理者)
-    int EMP_ROLE_GENERAL = 0; // 従業員管理者権限OFF(一般)
-    int CUS_ROLE_ADMIN = 1; // 得意先管理者権限ON(管理者)
-    int CUS_ROLE_GENERAL = 0; // 得意先管理者権限OFF(一般)
+    int ROLE_ADMIN = 1; // 管理者権限ON(管理者)
+    int ROLE_GENERAL = 0; // 管理者権限OFF(一般)
     int USER_DEL_TRUE = 1; // 削除フラグON(削除済み)
     int USER_DEL_FALSE = 0; // 削除フラグOFF(現役)
 
@@ -59,32 +56,32 @@ public interface JpaConst {
     // JPQL内パラメーター
     String JPQL_PARM_CODE = "code"; //ユーザー番号
     String JPQL_PARM_PASSWORD = "password"; // パスワード
-    String JPQL_PARM_USERLOYEE = "employee"; // ユーザー
+    String JPQL_PARM_USER = "user"; // ユーザー
 
     // NameQueryのnameとquery
     // 全てのユーザーをidの降順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
-    String Q_USER_GET_ALL_DEF = "SELECT e FROM User AS e ORDER BY e.id DESC"; //query
+    String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id DESC"; //query
     // 全てのユーザーの件数を取得する
     String Q_USER_COUNT = ENTITY_USER + ".count";
-    String Q_USER_COUNT_DEF = "SELECT COUNT(e) FROM User AS e";
-    // 社員番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
+    String Q_USER_COUNT_DEF = "SELECT COUNT(u) FROM User AS u";
+    // ユーザー番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
     String Q_USER_GET_BY_CODE_AND_PASS = ENTITY_USER + ".getByCodeAndPass";
-    String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT e FROM User AS e WHERE e.deleteFlag = 0 AND e.code = :" + JPQL_PARM_CODE +" AND e.password = :" + JPQL_PARM_PASSWORD;
+    String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT u FROM User AS u WHERE u.deleteFlag = 0 AND u.code = :" + JPQL_PARM_CODE +" AND u.password = :" + JPQL_PARM_PASSWORD;
     // 指定した社員番号を保持するユーザーの件数を取得する
     String Q_USER_COUNT_REGISTERED_BY_CODE = ENTITY_USER + ".countRegisteredByCode";
-    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM User AS e WHERE e.code = :" + JPQL_PARM_CODE;
+    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(u) FROM User AS u WHERE .code = :" + JPQL_PARM_CODE;
     // 全ての商品情報をidの降順に取得する
     String Q_PRD_GET_ALL = ENTITY_PRD + ".getAll";
-    String Q_PRD_GET_ALL_DEF = "SELECT r FROM Product AS r ORDER BY r.id DESC";
+    String Q_PRD_GET_ALL_DEF = "SELECT p FROM Product AS  ORDER BY p.id DESC";
     // 全ての商品情報の件数を取得する
     String Q_PRD_COUNT = ENTITY_PRD + ".count";
-    String Q_PRD_COUNT_DEF = "SELECT COUNT(r) FROM Product AS r";
+    String Q_PRD_COUNT_DEF = "SELECT COUNT(p) FROM Product AS p";
     // 指定したユーザーが作成した商品情報を全件idの降順で取得する
     String Q_PRD_GET_ALL_MINE = ENTITY_PRD + ".getAllMine";
-    String Q_PRD_GET_ALL_MINE_DEF = "SELECT r FROM Product AS r WHERE r.employee = :" + JPQL_PARM_USERLOYEE + " ORDER BY r.id DESC";
+    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER + " ORDER BY p.id DESC";
     // 指定したユーザーが作成した商品情報の件数を取得する
     String Q_PRD_COUNT_ALL_MINE = ENTITY_PRD + ".countAllMine";
-    String Q_PRD_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Product AS r WHERE r.employee = :" + JPQL_PARM_USERLOYEE;
+    String Q_PRD_COUNT_ALL_MINE_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER;
 
 }
