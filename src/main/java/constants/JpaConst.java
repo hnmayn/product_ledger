@@ -68,9 +68,9 @@ public interface JpaConst {
     // ユーザー番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
     String Q_USER_GET_BY_CODE_AND_PASS = ENTITY_USER + ".getByCodeAndPass";
     String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT u FROM User AS u WHERE u.deleteFlag = 0 AND u.code = :" + JPQL_PARM_CODE +" AND u.password = :" + JPQL_PARM_PASSWORD;
-    // 指定した社員番号を保持するユーザーの件数を取得する
+    // 指定したユーザー番号を保持するユーザーの件数を取得する
     String Q_USER_COUNT_REGISTERED_BY_CODE = ENTITY_USER + ".countRegisteredByCode";
-    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(u) FROM User AS u WHERE .code = :" + JPQL_PARM_CODE;
+    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(u) FROM User AS u WHERE u.code = :" + JPQL_PARM_CODE;
     // 全ての商品情報をidの降順に取得する
     String Q_PRD_GET_ALL = ENTITY_PRD + ".getAll";
     String Q_PRD_GET_ALL_DEF = "SELECT p FROM Product AS  ORDER BY p.id DESC";
