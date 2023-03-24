@@ -19,7 +19,7 @@ public enum AttributeConst {
     ERR("errors"),
 
     // ログイン中の従業員
-    LOGIN_USER("login_employee"),
+    LOGIN_USER("login_user"),
 
     // ログイン画面
     LOGIN_ERR("loginError"),
@@ -27,6 +27,7 @@ public enum AttributeConst {
     // ユーザー管理
     USER("user"),
     USERS("users"),
+    USER_COMPANY("user_company"),
     USER_COUNT("users_count"),
     USER_ID("id"),
     USER_CODE("code"),
