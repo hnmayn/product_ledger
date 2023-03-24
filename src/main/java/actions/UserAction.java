@@ -102,9 +102,9 @@ public class UserAction extends ActionBase{
                     null,
                     getRequestParam(AttributeConst.USER_CODE),
                     getRequestParam(AttributeConst.USER_NAME),
+                    getRequestParam(AttributeConst.USER_COMPANY),
                     getRequestParam(AttributeConst.USER_PASS),
-                    toNumber(getRequestParam(AttributeConst.USER_EMP_ADMIN_FLG)),
-                    toNumber(getRequestParam(AttributeConst.USER_CUS_ADMIN_FLG)),
+                    toNumber(getRequestParam(AttributeConst.USER_ADMIN_FLG)),
                     null,
                     null,
                     AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
@@ -209,9 +209,9 @@ public class UserAction extends ActionBase{
                     toNumber(getRequestParam(AttributeConst.USER_ID)),
                     getRequestParam(AttributeConst.USER_CODE),
                     getRequestParam(AttributeConst.USER_NAME),
+                    getRequestParam(AttributeConst.USER_COMPANY),
                     getRequestParam(AttributeConst.USER_PASS),
-                    toNumber(getRequestParam(AttributeConst.USER_EMP_ADMIN_FLG)),
-                    toNumber(getRequestParam(AttributeConst.USER_CUS_ADMIN_FLG)),
+                    toNumber(getRequestParam(AttributeConst.USER_ADMIN_FLG)),
                     null,
                     null,
                     AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
@@ -275,7 +275,7 @@ public class UserAction extends ActionBase{
         UserView uv = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
 
       // 管理者でなければエラー画面を表示
-        if (uv.getEmpAdminFlag() != AttributeConst.EMP_ROLE_ADMIN.getIntegerValue() || uv.getCusAdminFlag() != AttributeConst.CUS_ROLE_ADMIN.getIntegerValue() ){
+        if (uv.getAdminFlag() != AttributeConst.ROLE_ADMIN.getIntegerValue()){
 
             forward(ForwardConst.FW_ERR_UNKNOWN);
             return false;
