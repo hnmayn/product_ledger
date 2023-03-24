@@ -32,16 +32,11 @@ public enum AttributeConst {
     USER_CODE("code"),
     USER_PASS("password"),
     USER_NAME("name"),
-    USER_EMP_ADMIN_FLG("emp_admin_flag"),
-    USER_CUS_ADMIN_FLG("cus_admin_flag"),
+    USER_ADMIN_FLG("emp_admin_flag"),
 
-    // 従業員管理者フラグ
-    EMP_ROLE_ADMIN(1),
-    EMP_ROLE_GENERAL(0),
-
-    // 得意先管理者フラグ
-    CUS_ROLE_ADMIN(1),
-    CUS_ROLE_GENERAL(0),
+    // 管理者フラグ
+    ROLE_ADMIN(1),
+    ROLE_GENERAL(0),
 
     // 削除フラグ
     DEL_FLAG_TRUE(1),

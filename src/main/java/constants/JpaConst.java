@@ -18,8 +18,9 @@ public interface JpaConst {
     String USER_COL_ID  = "id"; // id
     String USER_COL_CODE = "code"; // ユーザー番号
     String USER_COL_NAME = "name"; // 氏名
+    String USER_COL_COMPANY = "company"; // 所属会社
     String USER_COL_PASS = "password"; // パスワード
-    String USER_COL_ADMIN_FLAG = "emp_admin_flag"; // 従業員管理者権限
+    String EMP_COL_ADMIN_FLAG = "emp_admin_flag"; // 従業員管理者権限
     String CUS_COL_ADMIN_FLAG = "cus_admin_flag"; // 得意先管理者権限
     String USER_COL_CREATED_AT = "created_at"; // 登録日時
     String USER_COL_UPDATED_AT = "updated_at"; // 更新日時
@@ -63,16 +64,16 @@ public interface JpaConst {
     // NameQueryのnameとquery
     // 全てのユーザーをidの降順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
-    String Q_USER_GET_ALL_DEF = "SELECT e FROM Employee AS e ORDER BY e.id DESC"; //query
+    String Q_USER_GET_ALL_DEF = "SELECT e FROM User AS e ORDER BY e.id DESC"; //query
     // 全てのユーザーの件数を取得する
     String Q_USER_COUNT = ENTITY_USER + ".count";
-    String Q_USER_COUNT_DEF = "SELECT COUNT(e) FROM Employee AS e";
+    String Q_USER_COUNT_DEF = "SELECT COUNT(e) FROM User AS e";
     // 社員番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
     String Q_USER_GET_BY_CODE_AND_PASS = ENTITY_USER + ".getByCodeAndPass";
-    String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT e FROM Employee AS e WHERE e.deleteFlag = 0 AND e.code = :" + JPQL_PARM_CODE +" AND e.password = :" + JPQL_PARM_PASSWORD;
+    String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT e FROM User AS e WHERE e.deleteFlag = 0 AND e.code = :" + JPQL_PARM_CODE +" AND e.password = :" + JPQL_PARM_PASSWORD;
     // 指定した社員番号を保持するユーザーの件数を取得する
     String Q_USER_COUNT_REGISTERED_BY_CODE = ENTITY_USER + ".countRegisteredByCode";
-    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :" + JPQL_PARM_CODE;
+    String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM User AS e WHERE e.code = :" + JPQL_PARM_CODE;
     // 全ての商品情報をidの降順に取得する
     String Q_PRD_GET_ALL = ENTITY_PRD + ".getAll";
     String Q_PRD_GET_ALL_DEF = "SELECT r FROM Product AS r ORDER BY r.id DESC";
