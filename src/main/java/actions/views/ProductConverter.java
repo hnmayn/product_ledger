@@ -56,7 +56,7 @@ public class ProductConverter {
                 p.getContent(),
                 p.getQuantity(),
                 p.getObsoleteFlag(),
-                UserConverter.toView(p.getEmployee()),
+                UserConverter.toView(p.getUser()),
                 p.getCreatedAt(),
                 p.getUpdatedAt());
     }
@@ -90,7 +90,7 @@ public class ProductConverter {
         p.setContent(pv.getContent());
         p.setQuantity(pv.getQuantity());
         p.setObsoleteFlag(pv.getObsoleteFlag());
-        UserConverter.toView(p.getEmployee());
+        UserConverter.toView(p.getUser());
         p.setCreatedAt(pv.getCreatedAt());
         p.setUpdatedAt(pv.getUpdatedAt());
     }

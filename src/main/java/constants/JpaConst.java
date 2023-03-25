@@ -20,7 +20,7 @@ public interface JpaConst {
     String USER_COL_NAME = "name"; // 氏名
     String USER_COL_COMPANY = "company"; // 所属会社
     String USER_COL_PASS = "password"; // パスワード
-    String USER_COL_ADMIN_FLAG = "admin_flag"; // 従業員管理者権限
+    String USER_COL_ADMIN_FLAG = "admin_flag"; // ユーザー管理者権限
     String USER_COL_CREATED_AT = "created_at"; // 登録日時
     String USER_COL_UPDATED_AT = "updated_at"; // 更新日時
     String USER_COL_DELETE_FLAG = "delete_flag"; // 削除フラグ
@@ -41,7 +41,7 @@ public interface JpaConst {
     String PRD_COL_CONTENT = "content"; // 商品説明
     String PRD_COL_QUANTITY = "quantity"; // 在庫数
     String PRD_COL_OBSOLETE = "obsolete_flag"; // 廃盤
-    String PRD_COL_USER = "employee_id"; // 商品情報を作成したユーザーのid
+    String PRD_COL_USER = "user_id"; // 商品情報を作成したユーザーのid
 
     int PRD_OBS_TRUE = 1; // 廃盤フラグON(廃盤済)
     int PRD_OBS_FALSE = 0; // 廃盤フラグOFF(現役)
@@ -58,30 +58,29 @@ public interface JpaConst {
     String JPQL_PARM_PASSWORD = "password"; // パスワード
     String JPQL_PARM_USER = "user"; // ユーザー
 
-    // NameQueryのnameとquery
+ // NameQueryのnameとquery
     // 全てのユーザーをidの降順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
     String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id DESC"; //query
     // 全てのユーザーの件数を取得する
     String Q_USER_COUNT = ENTITY_USER + ".count";
     String Q_USER_COUNT_DEF = "SELECT COUNT(u) FROM User AS u";
-    // ユーザー番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
+    // 社員番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
     String Q_USER_GET_BY_CODE_AND_PASS = ENTITY_USER + ".getByCodeAndPass";
     String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT u FROM User AS u WHERE u.deleteFlag = 0 AND u.code = :" + JPQL_PARM_CODE +" AND u.password = :" + JPQL_PARM_PASSWORD;
-    // 指定したユーザー番号を保持するユーザーの件数を取得する
+    // 指定した社員番号を保持するユーザーの件数を取得する
     String Q_USER_COUNT_REGISTERED_BY_CODE = ENTITY_USER + ".countRegisteredByCode";
     String Q_USER_COUNT_REGISTERED_BY_CODE_DEF = "SELECT COUNT(u) FROM User AS u WHERE u.code = :" + JPQL_PARM_CODE;
     // 全ての商品情報をidの降順に取得する
     String Q_PRD_GET_ALL = ENTITY_PRD + ".getAll";
-    String Q_PRD_GET_ALL_DEF = "SELECT p FROM Product AS  ORDER BY p.id DESC";
+    String Q_PRD_GET_ALL_DEF = "SELECT p FROM Product AS p ORDER BY p.id DESC";
     // 全ての商品情報の件数を取得する
     String Q_PRD_COUNT = ENTITY_PRD + ".count";
     String Q_PRD_COUNT_DEF = "SELECT COUNT(p) FROM Product AS p";
-    // 指定したユーザーが作成した商品情報を全件idの降順で取得する
+    // 商品情報の在庫数が10個未満を商品名の昇順で取得する
     String Q_PRD_GET_ALL_MINE = ENTITY_PRD + ".getAllMine";
-    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER + " ORDER BY p.id DESC";
+    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.quantity < 10 ORDER BY p.id ";
     // 指定したユーザーが作成した商品情報の件数を取得する
     String Q_PRD_COUNT_ALL_MINE = ENTITY_PRD + ".countAllMine";
     String Q_PRD_COUNT_ALL_MINE_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER;
-
 }

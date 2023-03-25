@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * 日報データのDTOモデル
+ * 商品情報のDTOモデル
  *
  */
 @Table(name = JpaConst.TABLE_PRD)
@@ -97,11 +97,11 @@ public class Product {
     private Integer obsoleteFlag;
 
     /**
-     * 日報を登録した従業員
+     * 日報を登録したユーザー
      */
     @ManyToOne
     @JoinColumn(name = JpaConst.PRD_COL_USER, nullable = false)
-    private User employee;
+    private User user;
 
     /**
      * 登録日時
