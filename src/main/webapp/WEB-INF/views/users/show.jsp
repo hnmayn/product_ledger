@@ -11,7 +11,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>登録者情報 詳細ページ</h2>
+        <h2>登録ユーザー情報 詳細ページ</h2>
 
     <table>
         <tbody>
@@ -24,12 +24,9 @@
                 <td><c:out value="${user.name}" /></td>
             </tr>
             <tr>
-                <th>所属</th>
-                <td><c:choose>
-                        <c:when test="${user.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">きつね商社</c:when>
-                        <c:otherwise>ぽんぽこ産地</c:otherwise>
-                    </c:choose></td>
-                </tr>
+                <th>氏名</th>
+                <td><c:out value="${user.department}" /></td>
+            </tr>
                 <tr>
                     <th>登録日時</th>
                     <fmt:parseDate value="${user.createdAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="createDay" type="date" />
@@ -44,7 +41,7 @@
         </table>
 
         <p>
-            <a href="<c:url value='?action=${actUser}&command=${commEdit}&id=${user.id}' />">この従業員情報を編集する</a>
+            <a href="<c:url value='?action=${actUser}&command=${commEdit}&id=${user.id}' />">このユーザー情報を編集する</a>
         </p>
 
         <p>

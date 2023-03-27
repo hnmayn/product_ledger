@@ -27,7 +27,6 @@
                     <th class="product_price">価格</th>
                     <th class="product_size">サイズ</th>
                     <th class="product_material">素材</th>
-                    <th class="product_content">商品説明</th>
                     <th class="product_quantity">在庫数</th>
                     <th class="product_action">操作</th>
                 </tr>
@@ -35,11 +34,15 @@
                     <tr class="row${status.count % 2}">
                         <td class="product_name"><c:out value="${product.name}" /></td>
                         <td class="product_price"><c:out value="${product.price}" /></td>
-                        <td class="product_size"><c:out value="${product.size}" /></td>
+                        <td class="product_size">
+                            <c:out value="${product.width}" />
+                            ×
+                            <c:out value="${product.depth}" />
+                            ×
+                            <c:out value="${product.height}" />
+                        </td>
                         <td class="product_material"><c:out value="${product.material}" /></td>
-                        <td class="product_content"><c:out value="${product.content}" /></td>
                         <td class="product_quantity"><c:out value="${product.quantity}" /></td>
-                        <td class="product_date"><fmt:formatDate value='${productDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="product_action"><a href="<c:url value='?action=${actPrd}&command=${commShow}&id=${product.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

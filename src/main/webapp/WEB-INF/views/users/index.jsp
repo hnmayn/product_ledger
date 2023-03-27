@@ -15,18 +15,20 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>従業員一覧</h2>
+        <h2>商品登録ユーザー 一覧</h2>
         <table id="user_list">
             <tbody>
                 <tr>
-                    <th>社員番号</th>
+                    <th>ユーザー番号</th>
                     <th>氏名</th>
+                    <th>所属</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach var="user" items="${users}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${user.code}" /></td>
                         <td><c:out value="${user.name}" /></td>
+                        <td><c:out value="${user.department}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${user.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
@@ -55,6 +57,6 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='?action=${actUser}&command=${commNew}' />">新規従業員の登録</a></p>
+        <p><a href="<c:url value='?action=${actUser}&command=${commNew}' />">新規ユーザーの登録</a></p>
     </c:param>
 </c:import>

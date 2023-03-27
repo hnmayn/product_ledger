@@ -7,7 +7,6 @@
 <c:set var="actPrd" value="${ForwardConst.ACT_PRD.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
-<c:set var="commGod" value="${ForwardConst.CMD_GOOD.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -26,7 +25,13 @@
                 </tr>
                 <tr>
                     <th>サイズ</th>
-                    <td><c:out value="${product.size}" /></td>
+                    <td class="product_size">
+                            <c:out value="${product.width}" />
+                            ×
+                            <c:out value="${product.depth}" />
+                            ×
+                            <c:out value="${product.height}" />
+                        </td>
                 </tr>
                 <tr>
                     <th>素材</th>

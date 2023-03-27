@@ -11,7 +11,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>id : ${user.id} の従業員情報 編集ページ</h2>
+        <h2>登録ユーザー情報 編集ページ</h2>
         <p>(パスワードは変更する場合のみ入力してください)</p>
         <form method="POST"
             action="<c:url value='?action=${action}&command=${commUpd}' />">
@@ -19,7 +19,7 @@
         </form>
 
         <p>
-            <a href="#" onclick="confirmDestroy();">この従業員情報を削除する</a>
+            <a href="#" onclick="confirmDestroy();">このユーザーの情報を削除する</a>
         </p>
         <form method="POST"
             action="<c:url value='?action=${action}&command=${commDel}' />">
