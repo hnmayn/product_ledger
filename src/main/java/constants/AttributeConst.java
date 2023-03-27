@@ -54,7 +54,7 @@ public enum AttributeConst {
     PRD_DEPTH("depth"),
     PRD_HEIGHT("height"),
     PRD_MTRL("material"),
-    PRD_CONTENT("content"),
+    PRD_CONTENT("product_content"),
     PRD_QUANTITY("quantity"),
     PRD_OBS_FLAG("obsolete_flag"),
 

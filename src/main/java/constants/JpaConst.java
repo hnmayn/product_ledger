@@ -81,7 +81,7 @@ public interface JpaConst {
     String Q_PRD_COUNT_DEF = "SELECT COUNT(p) FROM Product AS p";
     // 商品情報の在庫数が10個未満を商品名の昇順で取得する
     String Q_PRD_GET_ALL_MINE = ENTITY_PRD + ".getAllMine";
-    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.quantity < 10 ORDER BY p.id ";
+    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.quantity < 10 AND p.user = :" + JPQL_PARM_USER+ " ORDER BY p.id ";
     // 指定したユーザーが作成した商品情報の件数を取得する
     String Q_PRD_COUNT_ALL_MINE = ENTITY_PRD + ".countAllMine";
     String Q_PRD_COUNT_ALL_MINE_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER;
