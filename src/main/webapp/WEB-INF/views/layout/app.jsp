@@ -4,8 +4,8 @@
 <%@ page import="constants.AttributeConst" %>
 
 <c:set var="actTop" value="${ForwardConst.ACT_TOP.getValue()}" />
-<c:set var="actEmp" value="${ForwardConst.ACT_USER.getValue()}" />
-<c:set var="actRep" value="${ForwardConst.ACT_PRD.getValue()}" />
+<c:set var="actUser" value="${ForwardConst.ACT_USER.getValue()}" />
+<c:set var="actPrd" value="${ForwardConst.ACT_PRD.getValue()}" />
 <c:set var="actAuth" value="${ForwardConst.ACT_AUTH.getValue()}" />
 
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -26,9 +26,9 @@
                     <h1><a href="<c:url value='/?action=${actTop}&command=${commIdx}' />">商品管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                     <c:if test="${sessionScope.login_user != null}">
                         <c:if test="${sessionScope.login_user.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
-                            <a href="<c:url value='?action=${actEmp}&command=${commIdx}' />">ユーザー管理</a>&nbsp;
+                            <a href="<c:url value='?action=${actUser}&command=${commIdx}' />">ユーザー管理</a>&nbsp;
                         </c:if>
-                        <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">商品管理</a>&nbsp;
+                        <a href="<c:url value='?action=${actPrd}&command=${commIdx}' />">商品管理</a>&nbsp;
                     </c:if>
                 </div>
                 <c:if test="${sessionScope.login_user != null}">

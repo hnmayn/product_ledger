@@ -4,7 +4,7 @@
 <%@ page import="constants.AttributeConst" %>
 <%@ page import="constants.ForwardConst" %>
 
-<c:set var="actRep" value="${ForwardConst.ACT_PRD.getValue()}" />
+<c:set var="actPrd" value="${ForwardConst.ACT_PRD.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
 <c:set var="commGod" value="${ForwardConst.CMD_GOOD.getValue()}" />
@@ -37,10 +37,6 @@
                     <td><pre><c:out value="${product.content}" /></pre></td>
                 </tr>
                 <tr>
-                    <th>いいね！</th>
-                    <td><c:out value="${product.good}" /></td>
-                </tr>
-                <tr>
                     <th>在庫数</th>
                     <td><c:out value="${product.quantity}" /></td>
                 </tr>
@@ -64,14 +60,14 @@
             </tbody>
         </table>
 
-        <c:if test="${sessionScope.login_employee.id == product.employee.id}">
+        <c:if test="${sessionScope.login_user.id == product.user.id}">
             <p>
-                <a href="<c:url value='?action=${actRep}&command=${commEdt}&id=${product.id}' />">この商品を編集する</a>
+                <a href="<c:url value='?action=${actPrd}&command=${commEdt}&id=${product.id}' />">この商品を編集する</a>
             </p>
         </c:if>
 
-    <c:if test="${sessionScope.login_employee.id != product.employee.id}">
-        <form method="POST" action="<c:url value='?action=${actRep}&command=${commGod}' />">
+    <c:if test="${sessionScope.login_user.id != product.user.id}">
+        <form method="POST" action="<c:url value='?action=${actPrd}&command=${commGod}' />">
             <p>
             <input type="hidden" name="${AttributeConst.REP_ID.getValue()}" value="${product.id}" />
             <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
@@ -81,6 +77,6 @@
     </c:if>
 
         <p>
-            <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
+            <a href="<c:url value='?action=${actPrd}&command=${commIdx}' />">一覧に戻る</a>
     </c:param>
 </c:import>

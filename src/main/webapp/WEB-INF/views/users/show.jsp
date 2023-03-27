@@ -4,7 +4,7 @@
 <%@ page import="constants.ForwardConst" %>
 <%@ page import="constants.AttributeConst" %>
 
-<c:set var="actEmp" value="${ForwardConst.ACT_USER.getValue()}" />
+<c:set var="actUser" value="${ForwardConst.ACT_USER.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdit" value="${ForwardConst.CMD_EDIT.getValue()}" />
 
@@ -44,11 +44,11 @@
         </table>
 
         <p>
-            <a href="<c:url value='?action=${actEmp}&command=${commEdit}&id=${user.id}' />">この従業員情報を編集する</a>
+            <a href="<c:url value='?action=${actUser}&command=${commEdit}&id=${user.id}' />">この従業員情報を編集する</a>
         </p>
 
         <p>
-            <a href="<c:url value='?action=${actEmp}&command=${commIdx}' />">一覧に戻る</a>
+            <a href="<c:url value='?action=${actUser}&command=${commIdx}' />">一覧に戻る</a>
         </p>
     </c:param>
 </c:import>

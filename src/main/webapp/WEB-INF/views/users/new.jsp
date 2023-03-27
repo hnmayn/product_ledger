@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="constants.ForwardConst" %>
 
-<c:set var="action" value="${ForwardConst.ACT_EMP.getValue()}" />
+<c:set var="action" value="${ForwardConst.ACT_USER.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commCrt" value="${ForwardConst.CMD_CREATE.getValue()}" />
 

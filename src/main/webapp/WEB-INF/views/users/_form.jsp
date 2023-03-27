@@ -23,8 +23,8 @@
 <input type="text" name="${AttributeConst.USER_NAME.getValue()}" id="${AttributeConst.USER_NAME.getValue()}" value="${user.name}" />
 <br /><br />
 
-<label for="${AttributeConst.USER_COMPANY.getValue()}">所属会社</label><br />
-<input type="text" name="${AttributeConst.USER_COMPANY.getValue()}" id="${AttributeConst.USER_COMPANY.getValue()}" value="${user.name}" />
+<label for="${AttributeConst.USER_DEPARTMENT.getValue()}">所属会社</label><br />
+<input type="text" name="${AttributeConst.USER_DEPARTMENT.getValue()}" id="${AttributeConst.USER_DEPARTMENT.getValue()}" value="${user.name}" />
 <br /><br />
 
 <label for="${AttributeConst.USER_PASS.getValue()}">パスワード</label><br />

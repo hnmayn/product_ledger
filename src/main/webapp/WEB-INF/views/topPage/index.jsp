@@ -4,7 +4,7 @@
 <%@ page import="constants.ForwardConst" %>
 
 <c:set var="actTop" value="${ForwardConst.ACT_TOP.getValue()}" />
-<c:set var="actEmp" value="${ForwardConst.ACT_EMP.getValue()}" />
+<c:set var="actUser" value="${ForwardConst.ACT_USER.getValue()}" />
 <c:set var="actPrd" value="${ForwardConst.ACT_PRD.getValue()}" />
 
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
@@ -31,7 +31,7 @@
                     <th class="product_quantity">在庫数</th>
                     <th class="product_action">操作</th>
                 </tr>
-                <c:forEach var="report" items="${products}" varStatus="status">
+                <c:forEach var="product" items="${products}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="product_name"><c:out value="${product.name}" /></td>
                         <td class="product_price"><c:out value="${product.price}" /></td>

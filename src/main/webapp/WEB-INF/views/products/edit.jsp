@@ -11,7 +11,7 @@
     <c:param name="content">
 
         <h2>商品情報 編集ページ</h2>
-        <form method="POST" action="<c:url value='?action=${actRep}&command=${commUpd}' />">
+        <form method="POST" action="<c:url value='?action=${actPrd}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
 
@@ -32,7 +32,7 @@
         </script>
 
         <p>
-            <a href="<c:url value='?action=Report&command=index' />">一覧に戻る</a>
+            <a href="<c:url value='?action=Product&command=index' />">一覧に戻る</a>
         </p>
     </c:param>
 </c:import>

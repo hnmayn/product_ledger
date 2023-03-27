@@ -19,15 +19,15 @@
 
 <label for="${AttributeConst.PRD_PRC.getValue()}">価格 (¥)</label><br />
 <input type="number" name="${AttributeConst.PRD_PRC.getValue()}" id="${AttributeConst.PRD_PRC.getValue()}" value="${product.price}" size="8"
-step="0.01" min="0" max="300" />
+step="0.01" min="0" max="9999999" />
 <br /><br />
 
-<label for="${AttributeConst.PRD_PRC.getValue()}">サイズ (幅×奥行×高さ)</label><br />
-<input type="number" name="${AttributeConst.PRD_PRC.getValue()}" id="${AttributeConst.PRD_PRC.getValue()}" value="${product.size}" step="0.01" min="0" max="300" size="8"/>
+<label>サイズ (幅×奥行×高さ)</label><br />
+<input type="number" name="${AttributeConst.PRD_WIDTH.getValue()}" id="${AttributeConst.PRD_WIDTH.getValue()}" value="${product.width}" step="0.01" min="0" max="300" size="8"/>
 ×
-<input type="number" name="${AttributeConst.PRD_PRC.getValue()}" id="${AttributeConst.PRD_PRC.getValue()}" value="${product.size}" step="0.01" min="0" max="300" size="8"/>
+<input type="number" name="${AttributeConst.PRD_DEPTH.getValue()}" id="${AttributeConst.PRD_DEPTH.getValue()}" value="${product.depth}" step="0.01" min="0" max="300" size="8"/>
 ×
-<input type="number" name="${AttributeConst.PRD_PRC.getValue()}" id="${AttributeConst.PRD_PRC.getValue()}" value="${product.size}" step="0.01" min="0" max="300" size="8"/>
+<input type="number" name="${AttributeConst.PRD_HEIGHT.getValue()}" id="${AttributeConst.PRD_HEIGHT.getValue()}" value="${product.height}" step="0.01" min="0" max="300" size="8"/>
 cm
 <br /><br />
 

@@ -88,12 +88,12 @@ button {
     color: #721c24;
     background-color: #f8d7da;
 }
-table#employee_list th {
+table#user_list th {
     width: 30%;
     padding: 10px 2%;
 }
 
-table#employee_list td {
+table#user_list td {
     width: 29%;
     padding: 10px 2%;
 }
@@ -114,7 +114,7 @@ select {
     display: inline-block;
 }
 
-#employee_name {
+#user_name {
     color: #cccccc;
     width: 36%;
     padding-right: 3%;
@@ -130,27 +130,31 @@ h1 a {
     color: #eeeeee;
 }
 
-table#report_list th {
+table#product_list th {
     font-weight: bold;
     padding: 10px 2%;
 }
 
-teble#report_list .report_name{
+teble#product_list .product_name{
     width: 20%;
     padding: 10px 2%;
 }
 
-table#report_list .report_date{
+table#product_list .product_price{
     width: 20%
 }
 
-table#report_list .report_title{
-    width: 37%;
+table#product_list .product_material{
+    width: 20%;
 }
 
-table#report_list .report_action{
-    width: 13%;
+table#product_list .product_quantity{
+    width: 20%;
 }
+table#product_list .product_action{
+    width: 20%;
+}
+
 
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
