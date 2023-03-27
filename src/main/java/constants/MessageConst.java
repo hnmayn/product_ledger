@@ -20,13 +20,15 @@ public enum MessageConst {
 
     // バリデーション
     U_NONAME("氏名を入力してください。"),
-    U_NOCOMPANY("所属会社を入力してください。"),
+    U_NODEPARTMENT("部署を入力してください。"),
     U_NOPASSWORD("パスワードを入力してください。"),
     U_NOUSER_CODE("ユーザー番号を入力してください。"),
     U_USER_CODE_EXIST("入力されたユーザー番号の情報は既に存在しています。"),
     P_NONAME("商品名を入力してください。"),
     P_NOPRICE("価格を入力してください。"),
-    P_NOSIZE("サイズを入力してください"),
+    P_NOWIDTH("サイズ(幅)を入力してください"),
+    P_NODEPTH("サイズ(奥行)を入力してください"),
+    P_NOHEIGHT("サイズ(高さ)を入力してください"),
     P_NOMATERIAL("素材を入力してください"),
     P_NOCONTENT("商品説明を入力してください"),
     P_NOQUANTITY("在庫数を入力してください");

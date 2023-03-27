@@ -40,14 +40,14 @@ public class TopAction extends ActionBase {
     public void index() throws ServletException, IOException {
 
         // セッションからログイン中のユーザー情報を取得
-        UserView loginEmployee = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
+        UserView loginUser = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
 
         // ログイン中のユーザーが作成した商品データを、指定されたページ数の一覧画面に表示する分取得する
         int page = getPage();
-        List<ProductView> products = service.getMinePerPage(loginEmployee, page);
+        List<ProductView> products = service.getMinePerPage(loginUser, page);
 
         // ログイン中のユーザーが作成した商品データの件数を取得
-        long myProductsCount = service.countAllMine(loginEmployee);
+        long myProductsCount = service.countAllMine(loginUser);
 
         putRequestScope(AttributeConst.PRODUCT, products); // 取得した商品データ
         putRequestScope(AttributeConst.PRD_COUNT, myProductsCount); // ログイン中のユーザーが作成した商品データの数

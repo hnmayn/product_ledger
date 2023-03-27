@@ -66,17 +66,17 @@ public class AuthAction extends ActionBase {
         String pepper = getContextScope(PropertyConst.PEPPER);
 
         //有効な従業員か認証する
-        Boolean isValidEmployee = service.validateLogin(code, plainPass, pepper);
-        if (isValidEmployee) {
+        Boolean isValidUser = service.validateLogin(code, plainPass, pepper);
+        if (isValidUser) {
             //認証成功の場合
 
             //CSRF対策 tokenのチェック
             if (checkToken()) {
 
                 //ログインした従業員のDBデータを取得
-                UserView ev = service.findOne(code, plainPass, pepper);
+                UserView uv = service.findOne(code, plainPass, pepper);
                 //セッションにログインした従業員を設定
-                putSessionScope(AttributeConst.LOGIN_USER, ev);
+                putSessionScope(AttributeConst.LOGIN_USER, uv);
                 //セッションにログイン完了のフラッシュメッセージを設定
                 putSessionScope(AttributeConst.FLUSH, MessageConst.I_LOGINED.getMessage());
                 //トップページへリダイレクト

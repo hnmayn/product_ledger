@@ -27,13 +27,13 @@ public enum AttributeConst {
     // ユーザー管理
     USER("user"),
     USERS("users"),
-    USER_COMPANY("user_company"),
+    USER_DEPARTMENT("user_department"),
     USER_COUNT("users_count"),
     USER_ID("id"),
     USER_CODE("code"),
     USER_PASS("password"),
     USER_NAME("name"),
-    USER_ADMIN_FLG("emp_admin_flag"),
+    USER_ADMIN_FLG("user_admin_flag"),
 
     // 管理者フラグ
     ROLE_ADMIN(1),
@@ -50,7 +50,9 @@ public enum AttributeConst {
     PRD_ID("id"),
     PRD_NAME("name"),
     PRD_PRC("price"),
-    PRD_SIZE("size"),
+    PRD_WIDTH("width"),
+    PRD_DEPTH("depth"),
+    PRD_HEIGHT("height"),
     PRD_MTRL("material"),
     PRD_CONTENT("content"),
     PRD_QUANTITY("quantity"),

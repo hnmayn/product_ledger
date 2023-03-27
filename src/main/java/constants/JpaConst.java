@@ -18,7 +18,7 @@ public interface JpaConst {
     String USER_COL_ID  = "id"; // id
     String USER_COL_CODE = "code"; // ユーザー番号
     String USER_COL_NAME = "name"; // 氏名
-    String USER_COL_COMPANY = "company"; // 所属会社
+    String USER_COL_DEPARTMENT = "department"; // 部署
     String USER_COL_PASS = "password"; // パスワード
     String USER_COL_ADMIN_FLAG = "admin_flag"; // ユーザー管理者権限
     String USER_COL_CREATED_AT = "created_at"; // 登録日時
@@ -36,7 +36,9 @@ public interface JpaConst {
     String PRD_COL_ID = "id"; // id
     String PRD_COL_NAME = "name"; // 商品名
     String PRD_COL_PRC = "price"; // 価格
-    String PRD_COL_SIZE = "size"; // 商品サイズ
+    String PRD_COL_WIDTH = "width"; // 商品サイズ(幅)
+    String PRD_COL_DEPTH = "depth"; // 商品サイズ(奥行)
+    String PRD_COL_HEIGHT = "height"; // 商品サイズ(高さ)
     String PRD_COL_MTRL = "material"; // 素材
     String PRD_COL_CONTENT = "content"; // 商品説明
     String PRD_COL_QUANTITY = "quantity"; // 在庫数
@@ -65,7 +67,7 @@ public interface JpaConst {
     // 全てのユーザーの件数を取得する
     String Q_USER_COUNT = ENTITY_USER + ".count";
     String Q_USER_COUNT_DEF = "SELECT COUNT(u) FROM User AS u";
-    // 社員番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
+    // ユーザー番号とハッシュ化(ゴミ)済パスワードを条件に未削除のユーザーを取得する
     String Q_USER_GET_BY_CODE_AND_PASS = ENTITY_USER + ".getByCodeAndPass";
     String Q_USER_GET_BY_CODE_AND_PASS_DEF = "SELECT u FROM User AS u WHERE u.deleteFlag = 0 AND u.code = :" + JPQL_PARM_CODE +" AND u.password = :" + JPQL_PARM_PASSWORD;
     // 指定した社員番号を保持するユーザーの件数を取得する
