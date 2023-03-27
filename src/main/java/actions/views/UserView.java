@@ -44,7 +44,7 @@ public class UserView {
     /*
      * 管理者権限があるかどうか(一般:0,管理者:1)
      */
-    private Integer AdminFlag;
+    private Integer adminFlag;
 
     /*
      * 登録日時
