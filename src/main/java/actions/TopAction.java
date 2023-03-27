@@ -49,7 +49,7 @@ public class TopAction extends ActionBase {
         // ログイン中のユーザーが作成した商品データの件数を取得
         long myProductsCount = service.countAllMine(loginUser);
 
-        putRequestScope(AttributeConst.PRODUCT, products); // 取得した商品データ
+        putRequestScope(AttributeConst.PRODUCTS, products); // 取得した商品データ
         putRequestScope(AttributeConst.PRD_COUNT, myProductsCount); // ログイン中のユーザーが作成した商品データの数
         putRequestScope(AttributeConst.PAGE, page); // ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
