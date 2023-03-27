@@ -48,7 +48,7 @@ public class ProductAction extends ActionBase {
         // 全商品データの件数を取得
         long productsCount = service.countAll();
 
-        putRequestScope(AttributeConst.PRODUCT, products); // 取得した商品データ
+        putRequestScope(AttributeConst.PRODUCTS, products); // 取得した商品データ
         putRequestScope(AttributeConst.PRD_COUNT, productsCount); // 全ての商品データの件数
         putRequestScope(AttributeConst.PAGE, page); // ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
@@ -91,19 +91,21 @@ public class ProductAction extends ActionBase {
         if (checkToken()) {
 
             // セッションからログイン中の従業員情報を取得
-            UserView ev = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
+            UserView uv = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
 
             // パラメータの値をもとに商品情報のインスタンスを作成する
             ProductView pv = new ProductView(
                     null,
                     getRequestParam(AttributeConst.PRD_NAME),
-                    toNumber(getRequestParam(AttributeConst.PRD_PRC)),
-                    toNumber(getRequestParam(AttributeConst.PRD_SIZE)),
+                    getRequestParam(AttributeConst.PRD_PRC),
+                    getRequestParam(AttributeConst.PRD_WIDTH),
+                    getRequestParam(AttributeConst.PRD_DEPTH),
+                    getRequestParam(AttributeConst.PRD_HEIGHT),
                     getRequestParam(AttributeConst.PRD_MTRL),
                     getRequestParam(AttributeConst.PRD_CONTENT),
-                    toNumber(getRequestParam(AttributeConst.PRD_QUANTITY)),
+                    getRequestParam(AttributeConst.PRD_QUANTITY),
                     toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)),
-                    ev, // ログインしている従業員を、日報作成者として登録する
+                    uv, // ログインしている従業員を、日報作成者として登録する
                     null,
                     null);
 
@@ -165,9 +167,9 @@ public class ProductAction extends ActionBase {
         ProductView pv = service.findOne(toNumber(getRequestParam(AttributeConst.PRD_ID)));
 
         // セッションからログイン中の従業員情報を取得
-        UserView ev = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
+        UserView uv = (UserView) getSessionScope(AttributeConst.LOGIN_USER);
 
-        if (pv == null || ev.getId() != pv.getEmployee().getId()) {
+        if (pv == null || uv.getId() != pv.getUser().getId()) {
             // 該当の商品データが存在しない、または
             // ログインしている従業員が商品情報の作成者でない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
@@ -195,11 +197,13 @@ public class ProductAction extends ActionBase {
 
             //入力された商品情報を設定する
             pv.setName(getRequestParam(AttributeConst.PRD_NAME));
-            pv.setPrice(toNumber(getRequestParam(AttributeConst.PRD_PRC)));
-            pv.setSize(toNumber(getRequestParam(AttributeConst.PRD_SIZE)));
+            pv.setPrice(getRequestParam(AttributeConst.PRD_PRC));
+            pv.setWidth(getRequestParam(AttributeConst.PRD_WIDTH));
+            pv.setDepth(getRequestParam(AttributeConst.PRD_DEPTH));
+            pv.setHeight(getRequestParam(AttributeConst.PRD_HEIGHT));
             pv.setMaterial(getRequestParam(AttributeConst.PRD_MTRL));
             pv.setContent(getRequestParam(AttributeConst.PRD_CONTENT));
-            pv.setQuantity(toNumber(getRequestParam(AttributeConst.PRD_QUANTITY)));
+            pv.setQuantity(getRequestParam(AttributeConst.PRD_QUANTITY));
             pv.setObsoleteFlag(toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)));
 
             // 商品データを更新する

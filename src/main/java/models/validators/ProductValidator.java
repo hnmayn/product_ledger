@@ -26,15 +26,27 @@ public class ProductValidator {
         }
 
         // 価格のチェック
-        String priceError = validatePrice(toNumber(pv.getPrice()));
+        String priceError = validatePrice(pv.getPrice());
         if (!priceError.equals("")) {
             errors.add(priceError);
         }
 
-        // サイズのチェック
-        String sizeError = validateSize(toNumber(pv.getSize()));
-        if (!priceError.equals("")) {
-            errors.add(sizeError);
+        // サイズのチェック(幅)
+        String widthError = validateWidth(pv.getWidth());
+        if (!widthError.equals("")) {
+            errors.add(widthError);
+        }
+
+        // サイズのチェック(奥行)
+        String depthError = validateDepth(pv.getDepth());
+        if (!depthError.equals("")) {
+            errors.add(depthError);
+        }
+
+        // サイズのチェック(高さ)
+        String heightError = validateHeight(pv.getHeight());
+        if (!heightError.equals("")) {
+            errors.add(heightError);
         }
 
         // 素材のチェック
@@ -50,17 +62,12 @@ public class ProductValidator {
         }
 
         // 在庫数のチェック
-        String quantityError = validateQuantity(toNumber(pv.getQuantity()));
+        String quantityError = validateQuantity(pv.getQuantity());
         if (!quantityError.equals("")) {
             errors.add(quantityError);
         }
         return errors;
     }
-
-    private static String toNumber(Integer price) {
-        return null;
-    }
-
 
     /**
      * タイトルに入力値があるかをチェックし、入力値がなければエラーメッセージを返却
@@ -91,12 +98,38 @@ public class ProductValidator {
 
     /**
      * 内容に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
-     * @param size サイズ
+     * @param size サイズ(幅)
      * @return エラーメッセージ
      */
-    private static String validateSize(String size) {
-        if (size == null || size.equals("")) {
-            return MessageConst.P_NOSIZE.getMessage();
+    private static String validateWidth(String width) {
+        if (width == null || width.equals("")) {
+            return MessageConst.P_NOWIDTH.getMessage();
+        }
+        //入力値がある場合は空文字を返却
+        return "";
+    }
+
+    /**
+     * 内容に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param size サイズ(奥行き)
+     * @return エラーメッセージ
+     */
+    private static String validateDepth(String depth) {
+        if (depth == null || depth.equals("")) {
+            return MessageConst.P_NODEPTH.getMessage();
+        }
+        //入力値がある場合は空文字を返却
+        return "";
+    }
+
+    /**
+     * 内容に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param size サイズ(高さ)
+     * @return エラーメッセージ
+     */
+    private static String validateHeight(String height) {
+        if (height == null || height.equals("")) {
+            return MessageConst.P_NOHEIGHT.getMessage();
         }
         //入力値がある場合は空文字を返却
         return "";

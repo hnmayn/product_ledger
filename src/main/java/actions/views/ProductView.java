@@ -30,12 +30,22 @@ public class ProductView {
     /**
      * 価格
      */
-    private Integer price;
+    private String price;
 
     /**
-     * サイズ
+     * サイズ(幅)
      */
-    private Integer size;
+    private String width;
+
+    /**
+     * サイズ(奥行)
+     */
+    private String depth;
+
+    /**
+     * サイズ(高さ)
+     */
+    private String height;
 
     /**
      * 素材
@@ -50,7 +60,7 @@ public class ProductView {
     /**
      * 在庫数
      */
-    private Integer quantity;
+    private String quantity;
 
     /**
      * 廃盤かどうか(現役:0,廃盤済:1)
@@ -60,7 +70,7 @@ public class ProductView {
     /**
      * 日報を登録した従業員
      */
-    private UserView employee;
+    private UserView user;
 
     /**
      * 登録日時

@@ -34,7 +34,7 @@ public class ProductService extends ServiceBase {
 
     /**
      * 指定したユーザーが作成した商品データの件数を取得し、返却する
-     * @param employee
+     * @param user
      * @return 商品データの件数
      */
     public long countAllMine(UserView user) {

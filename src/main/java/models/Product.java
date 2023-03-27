@@ -67,10 +67,23 @@ public class Product {
     private Integer price;
 
     /**
-     * サイズ
+     * サイズ(幅)
      */
-    @Column(name = JpaConst.PRD_COL_SIZE)
-    private Integer size;
+    @Column(name = JpaConst.PRD_COL_WIDTH)
+    private Integer width;
+
+    /**
+     * サイズ(奥行)
+     */
+    @Column(name = JpaConst.PRD_COL_DEPTH)
+    private Integer depth;
+
+    /**
+     * サイズ(高さ)
+     */
+    @Column(name = JpaConst.PRD_COL_HEIGHT)
+    private Integer height;
+
 
     /**
      * 素材
