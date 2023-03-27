@@ -65,10 +65,10 @@ public class User {
     private String name;
 
     /*
-     * 所属会社
+     * 部署
      */
-    @Column(name = JpaConst.USER_COL_COMPANY, nullable = false, unique = true)
-    private String company;
+    @Column(name = JpaConst.USER_COL_DEPARTMENT, nullable = false)
+    private String department;
 
     /*
      * パスワード

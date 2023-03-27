@@ -23,7 +23,7 @@ public class UserConverter {
                 uv.getId(),
                 uv.getCode(),
                 uv.getName(),
-                uv.getCompany(),
+                uv.getDepartment(),
                 uv.getPassword(),
                 uv.getAdminFlag() == null
                 ? null
@@ -55,7 +55,7 @@ public class UserConverter {
                 u.getId(),
                 u.getCode(),
                 u.getName(),
-                u.getCompany(),
+                u.getDepartment(),
                 u.getPassword(),
                 u.getAdminFlag() == null
                 ? null

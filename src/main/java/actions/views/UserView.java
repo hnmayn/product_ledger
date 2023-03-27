@@ -32,9 +32,9 @@ public class UserView {
     private String name;
 
     /*
-     * 所属会社
+     * 部署
      */
-    private String company;
+    private String department;
 
     /*
      * パスワード

@@ -23,12 +23,12 @@ public class UserService extends ServiceBase {
      * @return 表示するデータのリスト
      */
     public List<UserView> getPerPage(int page){
-        List<User> employees = em.createNamedQuery(JpaConst.Q_USER_GET_ALL, User.class)
+        List<User> users = em.createNamedQuery(JpaConst.Q_USER_GET_ALL, User.class)
                 .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
                 .setMaxResults(JpaConst.ROW_PER_PAGE)
                 .getResultList();
 
-        return UserConverter.toViewList(employees);
+        return UserConverter.toViewList(users);
     }
 
     /**
@@ -36,10 +36,10 @@ public class UserService extends ServiceBase {
      * @return ユーザーテーブルのデータの件数
      */
     public long countAll() {
-        long empCount = (long) em.createNamedQuery(JpaConst.Q_USER_COUNT, Long.class)
+        long userCount = (long) em.createNamedQuery(JpaConst.Q_USER_COUNT, Long.class)
                 .getSingleResult();
 
-        return empCount;
+        return userCount;
     }
 
     /**
@@ -129,16 +129,16 @@ public class UserService extends ServiceBase {
     public List<String> update(UserView uv, String pepper){
 
         // idを条件に登録済のユーザー情報を取得する
-        UserView savedEmp = findOne(uv.getId());
+        UserView savedUser = findOne(uv.getId());
 
         boolean validateCode = false;
-        if (!savedEmp.getCode().equals(uv.getCode())) {
+        if (!savedUser.getCode().equals(uv.getCode())) {
             // ユーザー番号を更新する場合
 
             // ユーザー番号についてのバリデーションを行う
             validateCode = true;
             // 変更後のユーザー番号を設定する
-            savedEmp.setCode(uv.getCode());
+            savedUser.setCode(uv.getCode());
         }
 
         boolean validatePass = false;
@@ -149,23 +149,23 @@ public class UserService extends ServiceBase {
             validatePass = true;
 
             // 変更後のパスワードをハッシュ化し設定する
-            savedEmp.setPassword(
+            savedUser.setPassword(
                     EncryptUtil.getPasswordEncrypt(uv.getPassword(), pepper));
         }
 
-        savedEmp.setName(uv.getName()); // 変更後の氏名を設定する
-        savedEmp.setAdminFlag(uv.getAdminFlag()); // 変更後の管理者フラグを設定する
+        savedUser.setName(uv.getName()); // 変更後の氏名を設定する
+        savedUser.setAdminFlag(uv.getAdminFlag()); // 変更後の管理者フラグを設定する
 
         // 更新日時に現在時刻を設定する
         LocalDateTime today = LocalDateTime.now();
-        savedEmp.setUpdatedAt(today);
+        savedUser.setUpdatedAt(today);
 
         // 更新内容についてバリデーションを行う
-        List<String> errors = UserValidator.validate(this, savedEmp, validateCode, validatePass);
+        List<String> errors = UserValidator.validate(this, savedUser, validateCode, validatePass);
 
         // バリデーションエラーがなければデータを更新する
         if (errors.size() == 0) {
-            update(savedEmp);
+            update(savedUser);
         }
 
         // エラーを返却(エラーがなければ0件のからのリスト)

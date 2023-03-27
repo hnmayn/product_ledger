@@ -38,9 +38,9 @@ public class UserValidator {
         }
 
      // 所属会社のチェック
-        String companyError = validateCompany(uv.getCompany());
-        if (!companyError.equals("")) {
-            errors.add(companyError);
+        String departmentError = validateDepartment(uv.getDepartment());
+        if (!departmentError.equals("")) {
+            errors.add(departmentError);
         }
 
         // パスワードのチェック
@@ -54,7 +54,7 @@ public class UserValidator {
 
     /*
      * ユーザー番号の入力チェックを行い、エラーメッセージを返却
-     * @param service EmployeeServiceのインスタンス
+     * @param service UserServiceのインスタンス
      * @param code ユーザー番号
      * @param codeDuplicateCheckFlag ユーザー番号の重複チェックを実施するかどうか(実施する:true 実施しない:false)
      * @param エラーメッセージ
@@ -82,7 +82,7 @@ public class UserValidator {
     }
 
     /*
-     * @param service EmployeeServiceのインスタンス
+     * @param service UserServiceのインスタンス
      * @param code ユーザー番号
      * @return ユーザーテーブルに登録されている同一ユーザー番号のデータの件数
      */
@@ -112,10 +112,10 @@ public class UserValidator {
      * @param name 氏名
      * @return エラーメッセージ
      */
-    private static String validateCompany(String company) {
+    private static String validateDepartment(String department) {
 
-        if (company == null || company.equals("")) {
-            return MessageConst.U_NOCOMPANY.getMessage();
+        if (department == null || department.equals("")) {
+            return MessageConst.U_NODEPARTMENT.getMessage();
         }
 
         // 入力値がある場合は空文字を返却
