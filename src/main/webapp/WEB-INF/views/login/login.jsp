@@ -8,7 +8,7 @@
     <c:param name="content">
         <c:if test="${loginError}">
             <div id="flush_error">
-                社員番号かパスワードが間違っています。
+                ユーザー番号かパスワードが間違っています。
             </div>
         </c:if>
         <c:if test="${flush != null}">
@@ -18,7 +18,7 @@
         </c:if>
         <h2>ログイン</h2>
         <form method="POST" action="<c:url value='/?action=${action}&command=${command}' />">
-            <label for="${AttributeConst.USER_CODE.getValue()}">社員番号</label><br />
+            <label for="${AttributeConst.USER_CODE.getValue()}">ユーザー番号</label><br />
             <input type="text" name="${AttributeConst.USER_CODE.getValue()}" id="${AttributeConst.USER_CODE.getValue()}" value="${code}" />
             <br /><br />
 
