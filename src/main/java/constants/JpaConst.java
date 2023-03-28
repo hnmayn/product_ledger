@@ -59,8 +59,9 @@ public interface JpaConst {
     String JPQL_PARM_CODE = "code"; //ユーザー番号
     String JPQL_PARM_PASSWORD = "password"; // パスワード
     String JPQL_PARM_USER = "user"; // ユーザー
+    String JPQL_PARM_NAME = "name"; // 名前
 
- // NameQueryのnameとquery
+    // NamedQueryのnameとquery
     // 全てのユーザーをidの降順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
     String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id DESC"; //query
@@ -79,10 +80,22 @@ public interface JpaConst {
     // 全ての商品情報の件数を取得する
     String Q_PRD_COUNT = ENTITY_PRD + ".count";
     String Q_PRD_COUNT_DEF = "SELECT COUNT(p) FROM Product AS p";
-    // 商品情報の在庫数が10個未満を商品名の昇順で取得する
+    // 商品情報の在庫数が10個未満を取得する
     String Q_PRD_GET_ALL_MINE = ENTITY_PRD + ".getAllMine";
-    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.quantity < 10 AND p.user = :" + JPQL_PARM_USER+ " ORDER BY p.id ";
+    String Q_PRD_GET_ALL_MINE_DEF = "SELECT p FROM Product AS p WHERE p.quantity < 10 AND p.user = :" + JPQL_PARM_USER + " ORDER BY p.id ";
     // 指定したユーザーが作成した商品情報の件数を取得する
     String Q_PRD_COUNT_ALL_MINE = ENTITY_PRD + ".countAllMine";
     String Q_PRD_COUNT_ALL_MINE_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :" + JPQL_PARM_USER;
+    // 廃盤を含む全ての商品情報を商品名を条件にidの降順で取得する
+    String Q_PRD_GET_OBSOLETE_ALL = ENTITY_PRD + ".getAllSearch";
+    String Q_PRD_GET_OBSOLETE_ALL_DEF = "SELECT p FROM Product AS p WHERE p.name = :" + JPQL_PARM_NAME + " ORDER BY p.id DESC";
+    // 廃盤を含む全ての商品情報を商品名を条件にidの降順で件数を取得する
+    String Q_PRD_COUNT_OBSOLETE_ALL = ENTITY_PRD + ".countAllSearch";
+    String Q_PRD_COUNT_OBSOLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.name = :" + JPQL_PARM_NAME;
+    // 全ての商品情報を商品名と廃盤を条件にidの降順で取得する
+    String Q_PRD_GET_NOT_OBSPLETE_ALL = ENTITY_PRD + ".getNotSearch";
+    String Q_PRD_GET_NOT_OBSPLETE_ALL_DEF = "SELECT p FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME + " ORDER BY p.id DESC";
+    // 全ての商品情報を商品名と廃盤を条件にidの降順で件数を取得する
+    String Q_PRD_COUNT_NOT_OBSPLETE_ALL = ENTITY_PRD + ".countNotSearch";
+    String Q_PRD_COUNT_NOT_OBSPLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME;
 }

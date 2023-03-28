@@ -247,7 +247,7 @@ public class ProductAction extends ActionBase {
             putSessionScope(AttributeConst.FLUSH, MessageConst.P_DELETED.getMessage());
 
             //一覧画面にリダイレクト
-            redirect(ForwardConst.ACT_USER, ForwardConst.CMD_INDEX);
+            redirect(ForwardConst.ACT_PRD, ForwardConst.CMD_INDEX);
         }
     }
 }
