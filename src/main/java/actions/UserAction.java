@@ -54,7 +54,7 @@ public class UserAction extends ActionBase{
         // 全てのユーザーデータの件数を取得
         long usersCount = service.countAll();
 
-        putRequestScope(AttributeConst.USER, users); // 取得したユーザーデータ
+        putRequestScope(AttributeConst.USERS, users); // 取得したユーザーデータ
         putRequestScope(AttributeConst.USER_COUNT, usersCount); // 全てのユーザーデータ
         putRequestScope(AttributeConst.PAGE,page); // ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
