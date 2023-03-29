@@ -15,7 +15,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>商品登録ユーザー 一覧</h2>
+        <h2>商品登録ユーザー</h2>
         <table id="user_list">
             <tbody>
                 <tr>

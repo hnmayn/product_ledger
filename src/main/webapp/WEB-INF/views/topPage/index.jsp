@@ -20,13 +20,13 @@
             </div>
         </c:if>
         <h2>発注商品 一覧</h2>
-        <h3>(在庫数10点未満)</h3>
+        <h3>(在庫10点未満)</h3>
         <table id="product_list">
             <tbody>
                 <tr>
                     <th class="product_name">商品名</th>
-                    <th class="product_price">価格</th>
-                    <th class="product_size">サイズ</th>
+                    <th class="product_price">価格(¥)</th>
+                    <th class="product_size">サイズ(cm)</th>
                     <th class="product_material">素材</th>
                     <th class="product_quantity">在庫数</th>
                     <th class="product_action">操作</th>

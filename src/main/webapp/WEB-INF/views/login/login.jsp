@@ -16,7 +16,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>ログイン</h2>
+        <h2>ログインページ</h2>
         <form method="POST" action="<c:url value='/?action=${action}&command=${command}' />">
             <label for="${AttributeConst.USER_CODE.getValue()}">ユーザー番号</label><br />
             <input type="text" name="${AttributeConst.USER_CODE.getValue()}" id="${AttributeConst.USER_CODE.getValue()}" value="${code}" />
