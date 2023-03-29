@@ -57,6 +57,8 @@ public enum AttributeConst {
     PRD_CONTENT("product_content"),
     PRD_QUANTITY("quantity"),
     PRD_OBS_FLAG("obsolete_flag"),
+    PRD_KEYWORD("keyword"),
+    PRD_DELETE_ALL("delete_all"),
 
     // 廃盤フラグ
     PRD_OBS_TRUE(1), // 廃盤済

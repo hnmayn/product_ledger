@@ -1,6 +1,7 @@
 package services;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import actions.views.ProductConverter;
@@ -51,12 +52,36 @@ public class ProductService extends ServiceBase {
      * @param page ページ数
      * @return 一覧画面に表示するデータのリスト
      */
-    public List<ProductView> getAllPerPage(int page){
+    public List<ProductView> getAllPerPage(int page, String keyword, int deleteAllFlag){
+        List<Product> products = new ArrayList<Product>();
 
-        List<Product> products = em.createNamedQuery(JpaConst.Q_PRD_GET_ALL, Product.class)
-                .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
-                .setMaxResults(JpaConst.ROW_PER_PAGE)
-                .getResultList();
+        if ((keyword == null || keyword.equals("")) && deleteAllFlag ==1) {
+            // キーワードが未入力かつ廃盤を含むフラグが立っている場合
+            products = em.createNamedQuery(JpaConst.Q_PRD_GET_ALL, Product.class)
+                    .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
+                    .setMaxResults(JpaConst.ROW_PER_PAGE)
+                    .getResultList();
+        } else if ((keyword == null || keyword.equals("")) && deleteAllFlag !=1) {
+            // キーワードが未入力かつ廃盤を含むフラグが立っていない場合
+            products = em.createNamedQuery(JpaConst.Q_PRD_GET_NOT_OBSPLETE_ALL, Product.class)
+                    .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
+                    .setMaxResults(JpaConst.ROW_PER_PAGE)
+                    .getResultList();
+        } else if (!(keyword == null || keyword.equals("")) && deleteAllFlag ==1) {
+            // キーワードが入力かつ廃盤を含むフラグが立っている場合
+            products = em.createNamedQuery(JpaConst.Q_PRD_GET_OBSOLETE_ALL, Product.class)
+                    .setParameter(JpaConst.JPQL_PARM_NAME, keyword)
+                    .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
+                    .setMaxResults(JpaConst.ROW_PER_PAGE)
+                    .getResultList();
+        } else {
+            // 上記以外（キーワードが入力かつ廃盤を含むフラグが立ってる）の場合
+            products = em.createNamedQuery(JpaConst.Q_PRD_GET_BY_NAME_NOT_OBSPLETE_ALL, Product.class)
+                    .setParameter(JpaConst.JPQL_PARM_NAME, keyword)
+                    .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
+                    .setMaxResults(JpaConst.ROW_PER_PAGE)
+                    .getResultList();
+        }
         return ProductConverter.toViewList(products);
     }
 
@@ -64,9 +89,28 @@ public class ProductService extends ServiceBase {
      * 商品テーブルのデータの件数を取得し、返却する
      * @return データの件数
      */
-    public long countAll() {
-        long products_count = (long) em.createNamedQuery(JpaConst.Q_PRD_COUNT, Long.class)
-                .getSingleResult();
+    public long countAll(String keyword, int deleteAllFlag) {
+
+        long products_count = 0L;
+        if ((keyword == null || keyword.equals("")) && deleteAllFlag ==1) {
+            // キーワードが未入力かつ廃盤を含むフラグが立っている場合
+            products_count = (long) em.createNamedQuery(JpaConst.Q_PRD_COUNT, Long.class)
+                    .getSingleResult();
+        } else if ((keyword == null || keyword.equals("")) && deleteAllFlag !=1) {
+            // キーワードが未入力かつ廃盤を含むフラグが立っていない場合
+            products_count = (long) em.createNamedQuery(JpaConst.Q_PRD_COUNT_NOT_OBSPLETE_ALL, Long.class)
+                    .getSingleResult();
+        }else if (!(keyword == null || keyword.equals("")) && deleteAllFlag !=1) {
+            // キーワード入力かつ廃盤を含むフラグが立っていない場合
+            products_count = (long) em.createNamedQuery(JpaConst.Q_PRD_COUNT_OBSOLETE_ALL, Long.class)
+                    .setParameter(JpaConst.JPQL_PARM_NAME, keyword)
+                    .getSingleResult();
+        } else {
+            // 上記以外（キーワードが入力かつ廃盤を含むフラグが立ってる）の場合
+            products_count = (long) em.createNamedQuery(JpaConst.Q_PRD_COUNT_BY_NAME_NOT_OBSPLETE_ALL, Long.class)
+                    .setParameter(JpaConst.JPQL_PARM_NAME, keyword)
+                    .getSingleResult();
+        }
         return products_count;
     }
 

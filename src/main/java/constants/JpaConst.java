@@ -61,7 +61,7 @@ public interface JpaConst {
     String JPQL_PARM_USER = "user"; // ユーザー
     String JPQL_PARM_NAME = "name"; // 名前
 
-    // NamedQueryのnameとquery
+ // NamedQueryのnameとquery
     // 全てのユーザーをidの降順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
     String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id DESC"; //query
@@ -93,9 +93,15 @@ public interface JpaConst {
     String Q_PRD_COUNT_OBSOLETE_ALL = ENTITY_PRD + ".countAllSearch";
     String Q_PRD_COUNT_OBSOLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.name = :" + JPQL_PARM_NAME;
     // 全ての商品情報を商品名と廃盤を条件にidの降順で取得する
-    String Q_PRD_GET_NOT_OBSPLETE_ALL = ENTITY_PRD + ".getNotSearch";
-    String Q_PRD_GET_NOT_OBSPLETE_ALL_DEF = "SELECT p FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME + " ORDER BY p.id DESC";
+    String Q_PRD_GET_BY_NAME_NOT_OBSPLETE_ALL = ENTITY_PRD + ".getByNameNotSearch";
+    String Q_PRD_GET_BY_NAME_NOT_OBSPLETE_ALL_DEF = "SELECT p FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME + " ORDER BY p.id DESC";
     // 全ての商品情報を商品名と廃盤を条件にidの降順で件数を取得する
-    String Q_PRD_COUNT_NOT_OBSPLETE_ALL = ENTITY_PRD + ".countNotSearch";
-    String Q_PRD_COUNT_NOT_OBSPLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME;
+    String Q_PRD_COUNT_BY_NAME_NOT_OBSPLETE_ALL = ENTITY_PRD + ".countByNameNotSearch";
+    String Q_PRD_COUNT_BY_NAME_NOT_OBSPLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.obsoleteFlag = 0 AND p.name = :" + JPQL_PARM_NAME;
+    // 全ての商品情報を商品名を条件にidの降順で取得する
+    String Q_PRD_GET_NOT_OBSPLETE_ALL = ENTITY_PRD + ".getNoObsolete";
+    String Q_PRD_GET_NOT_OBSPLETE_ALL_DEF = "SELECT p FROM Product AS p WHERE p.obsoleteFlag = 0 ORDER BY p.id DESC";
+    // 全ての商品情報を商品名を条件に件数を取得する
+    String Q_PRD_COUNT_NOT_OBSPLETE_ALL = ENTITY_PRD + ".countNoObsolete";
+    String Q_PRD_COUNT_NOT_OBSPLETE_ALL_DEF = "SELECT COUNT(p) FROM Product AS p WHERE p.obsoleteFlag = 0";
 }

@@ -44,13 +44,18 @@ import lombok.Setter;
             name = JpaConst.Q_PRD_COUNT_OBSOLETE_ALL,
             query = JpaConst.Q_PRD_COUNT_OBSOLETE_ALL_DEF),
     @NamedQuery(
+            name = JpaConst.Q_PRD_GET_BY_NAME_NOT_OBSPLETE_ALL,
+            query = JpaConst.Q_PRD_GET_BY_NAME_NOT_OBSPLETE_ALL_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_PRD_COUNT_BY_NAME_NOT_OBSPLETE_ALL,
+            query = JpaConst.Q_PRD_COUNT_BY_NAME_NOT_OBSPLETE_ALL_DEF),
+    @NamedQuery(
             name = JpaConst.Q_PRD_GET_NOT_OBSPLETE_ALL,
             query = JpaConst.Q_PRD_GET_NOT_OBSPLETE_ALL_DEF),
     @NamedQuery(
             name = JpaConst.Q_PRD_COUNT_NOT_OBSPLETE_ALL,
             query = JpaConst.Q_PRD_COUNT_NOT_OBSPLETE_ALL_DEF),
 })
-
 @Getter //全てのクラスフィールドについてgetterを自動生成する(Lombok)
 @Setter //全てのクラスフィールドについてsetterを自動生成する(Lombok)
 @NoArgsConstructor //引数なしコンストラクタを自動生成する(Lombok)

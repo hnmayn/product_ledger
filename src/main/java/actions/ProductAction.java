@@ -43,10 +43,12 @@ public class ProductAction extends ActionBase {
 
         // 指定されたページ数の一覧画面に表示する商品データを取得
         int page = getPage();
-        List<ProductView> products = service.getAllPerPage(page);
+        String keyword = getRequestParam(AttributeConst.PRD_KEYWORD);
+        int deleteAllFlag = toNumber(getRequestParam(AttributeConst.PRD_DELETE_ALL));
+        List<ProductView> products = service.getAllPerPage(page, keyword, deleteAllFlag);
 
         // 全商品データの件数を取得
-        long productsCount = service.countAll();
+        long productsCount = service.countAll(keyword, deleteAllFlag);
 
         putRequestScope(AttributeConst.PRODUCTS, products); // 取得した商品データ
         putRequestScope(AttributeConst.PRD_COUNT, productsCount); // 全ての商品データの件数
