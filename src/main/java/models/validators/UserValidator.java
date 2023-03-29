@@ -108,8 +108,8 @@ public class UserValidator {
     }
 
     /*
-     * 所属会社に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
-     * @param name 氏名
+     * 部署に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param name 部署
      * @return エラーメッセージ
      */
     private static String validateDepartment(String department) {
