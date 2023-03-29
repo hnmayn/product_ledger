@@ -17,8 +17,8 @@
             </div>
         </c:if>
         <h1>商品検索</h1>
-        <form action=${action}&command=${commIdx} method="post">
-            <input type="text" name="keyword" value="" size="15">
+        <form action="http://localhost:8080/product_ledger/&command=index?action=Product&command=index" method="post">
+            <input type="text" name="keyword">
             <input type="checkbox" name="delete_all" value="1"> 廃盤を含む
             <input type="submit" value="検索">
         </form>
