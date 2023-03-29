@@ -25,12 +25,12 @@ public abstract class ActionBase {
     protected HttpServletResponse response;
 
     /*
-    * 初期化処理
-    * サーブレットコンテキスト、リクエスト、レスポンスをクラスフィールドに設定
-    * @param servletContext
-    * @param servletRequest
-    * @param servletResponse
-    */
+     * 初期化処理
+     * サーブレットコンテキスト、リクエスト、レスポンスをクラスフィールドに設定
+     * @param servletContext
+     * @param servletRequest
+     * @param servletResponse
+     */
     public void init(
             ServletContext servletContext,
             HttpServletRequest servletRequest,

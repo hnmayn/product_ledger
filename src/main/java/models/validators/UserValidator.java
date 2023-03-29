@@ -37,7 +37,7 @@ public class UserValidator {
             errors.add(nameError);
         }
 
-     // 所属会社のチェック
+        // 所属会社のチェック
         String departmentError = validateDepartment(uv.getDepartment());
         if (!departmentError.equals("")) {
             errors.add(departmentError);
