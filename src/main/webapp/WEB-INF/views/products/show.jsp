@@ -12,7 +12,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>商品 一覧</h2>
+        <h2>商品 詳細</h2>
 
         <table>
             <tbody>
@@ -47,7 +47,7 @@
                     <td><c:choose>
                             <c:when
                                 test="${product.obsoleteFlag == AttributeConst.PRD_OBS_TRUE.getIntegerValue()}">廃盤</c:when>
-                            <c:otherwise>通常販売</c:otherwise>
+                            <c:otherwise>活動中</c:otherwise>
                         </c:choose></td>
                 </tr>
                 <tr>

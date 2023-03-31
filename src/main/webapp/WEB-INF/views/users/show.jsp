@@ -12,7 +12,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>登録ユーザー情報 詳細ページ</h2>
+        <h2>ユーザー情報 詳細ページ</h2>
 
         <table>
             <tbody>
@@ -25,7 +25,7 @@
                     <td><c:out value="${user.name}" /></td>
                 </tr>
                 <tr>
-                    <th>氏名</th>
+                    <th>所属部署</th>
                     <td><c:out value="${user.department}" /></td>
                 </tr>
                 <tr>

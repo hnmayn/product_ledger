@@ -24,7 +24,7 @@
 <br /><br />
 
 <label for="${AttributeConst.USER_DEPARTMENT.getValue()}">所属部署</label><br />
-<input type="text" name="${AttributeConst.USER_DEPARTMENT.getValue()}" id="${AttributeConst.USER_DEPARTMENT.getValue()}" value="${user.name}" />
+<input type="text" name="${AttributeConst.USER_DEPARTMENT.getValue()}" id="${AttributeConst.USER_DEPARTMENT.getValue()}" value="${user.department}" />
 <br /><br />
 
 <label for="${AttributeConst.USER_PASS.getValue()}">パスワード</label><br />

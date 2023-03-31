@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="constants.ForwardConst"%>
+<%@ page import="constants.AttributeConst"%>
 
 <c:set var="actPrd" value="${ForwardConst.ACT_PRD.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -17,10 +18,12 @@
             </div>
         </c:if>
         <h1>商品検索</h1>
-        <form action="http://localhost:8080/product_ledger/&command=index?action=Product&command=index" method="post">
-            <input type="text" name="keyword">
-            <input type="checkbox" name="delete_all" value="1"> 廃盤を含む
-            <input type="submit" value="検索">
+        <form
+            action="http://localhost:8080/product_ledger/&command=index?action=Product&command=index"
+            method="post">
+            <input type="text" name="keyword"> <input type="checkbox"
+                name="delete_all" value="1"> 廃盤を含む <input type="submit"
+                value="検索">
         </form>
         <h2>商品情報 一覧</h2>
         <table id="product_list">
@@ -31,7 +34,8 @@
                     <th class="product_size">サイズ</th>
                     <th class="product_material">素材</th>
                     <th class="product_quantity">在庫数</th>
-                    <th class="product_action">操作</th>
+                    <th class="product_obsolete_flag">活動状況</th>
+                    <th class="product_action">詳細</th>
                 </tr>
                 <c:forEach var="product" items="${products}" varStatus="status">
                     <tr class="row${status.count % 2}">
@@ -44,8 +48,15 @@
                                 value="${product.material}" /></td>
                         <td class="product_quantity"><c:out
                                 value="${product.quantity}" /></td>
+                        <td class="product_obsolete_flag"><c:if
+                                test="${product.obsoleteFlag== AttributeConst.PRD_OBS_TRUE.getIntegerValue()}">
+                                <c:out value="廃盤" />
+                            </c:if> <c:if
+                                test="${product.obsoleteFlag== AttributeConst.PRD_OBS_FALSE.getIntegerValue()}">
+                                <c:out value="活動中" />
+                            </c:if></td>
                         <td class="product_action"><a
-                            href="<c:url value='?action=${actPrd}&command=${commShow}&id=${product.id}' />">詳細を見る</a></td>
+                            href="<c:url value='?action=${actPrd}&command=${commShow}&id=${product.id}' />">表示</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
