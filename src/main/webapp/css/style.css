@@ -1,77 +1,80 @@
 @CHARSET "UTF-8";
-​
+
 body {
     color: #000;
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-        'Segoe UI', 'Hiragino Sans', 'BIZ UDGothic', Meiryo, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont,'Helvetica Neue','Segoe UI','Hiragino Sans','BIZ UDGothic',Meiryo,sans-serif;
 }
-​
+
 #header {
+    width: 100%;
     height: 70px;
     padding: 0.4em 0.5em;
-    color: #000;
-    border-bottom: 6px double #246282cf;
+  color: #000;
+  border-bottom: 6px double #246282cf;
 }
-​
+
 #content {
     width: 94%;
-    margin: 15px;
+    margin-top: 15px;
     padding-left: 3%;
+
 }
-​
+
 h1 {
     font-size: 24px;
     display: inline;
+
+
 }
-​
 h2 {
     font-size: 36px;
     margin-bottom: 15px;
-    text-align: center;
+    text-align:center;
     background-color: #57999f57;;
 }
-​
+
 li {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-​
+
 p {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-​
+
 a {
     text-decoration: none;
     color: #24628294;
+
 }
-​
+
 table {
     width: 100%;
     table-layout: fixed;
 }
-​
+
 th {
     width: 26%;
     padding: 10px 2%;
     border-bottom: 1px solid #000;
 }
-​
+
 td {
     width: 66%;
     padding: 10px 2%;
     border-bottom: 1px solid #000;
 }
-​
+
 button {
     font-size: 14px;
     padding: 5px 10px;
 }
-​
+
 #footer {
     text-align: center;
 }
-​
+
 #flush_success {
     width: 100%;
     padding-top: 28px;
@@ -81,7 +84,7 @@ button {
     color: #ffffff;
     background-color: #536d7abd;
 }
-​
+
 #flush_error {
     width: 100%;
     padding-top: 28px;
@@ -91,36 +94,32 @@ button {
     color: #ffffff;
     background-color: #cc5b66b3;
 }
-​
 table#user_list th {
     width: 30%;
     padding: 10px 2%;
 }
-​
+
 table#user_list td {
     width: 29%;
     padding: 10px 2%;
 }
-​
+
 tr.row1 {
-    background-color: #f2f2f2;
+        background-color: #f2f2f2;
 }
-​
 tr.row0 {
-    background-color: #ffffff;
+        background-color: #ffffff;
 }
-​
 select {
     height: 30px;
 }
-​
 #header_menu {
     width: 57%;
     padding-top: 17px;
     padding-left: 3%;
     display: inline-block;
 }
-​
+
 #user_name {
     color: #000;
     width: 36%;
@@ -128,51 +127,50 @@ select {
     text-align: right;
     display: inline-block;
 }
-​
+
 #header a {
     color: #000;
 }
-​
+
 h1 a {
     color: #eeeeee;
 }
-​
+
 table#product_list th {
     font-weight: bold;
     padding: 10px 2%;
 }
-​
-teble#product_list .product_name {
+
+teble#product_list .product_name{
     width: 20%;
     padding: 10px 2%;
 }
-​
-table#product_list .product_price {
+
+table#product_list .product_price{
     width: 20%
 }
-​
-table#product_list .product_material {
+
+table#product_list .product_material{
     width: 20%;
 }
-​
-table#product_list .product_quantity {
+
+table#product_list .product_quantity{
     width: 20%;
 }
-​
-table#product_list .product_action {
+table#product_list .product_action{
     width: 20%;
 }
-​
+
+
 pre {
-    font-family: "Hiragino Kaku Gothic Pro", Meiryo, "MS PGothic", Helvetica,
-        Arial, sans-serif;
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
 }
-​
+
 h3 {
     font-size: large;
     text-align: right;
 }
-​
+
 .input-form {
     margin: 0 auto;
     width: 500px;

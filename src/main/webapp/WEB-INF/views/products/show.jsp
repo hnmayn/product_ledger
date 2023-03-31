@@ -36,9 +36,7 @@
                 </tr>
                 <tr>
                     <th>商品説明</th>
-                    <td><pre>
-                            <c:out value="${product.content}" />
-                        </pre></td>
+                    <td><c:out value="${product.content}" /></td>
                 </tr>
                 <tr>
                     <th>在庫数</th>
