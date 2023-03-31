@@ -14,7 +14,7 @@ public class DBUtil {
     // EntityManagerインスタンスを生成
     public static EntityManager createEntityManager() {
         return _getEntityManagerFactory().createEntityManager();
-}
+    }
 
     // EntityManagerFactoryインスタンス生成
     private static EntityManagerFactory _getEntityManagerFactory() {
