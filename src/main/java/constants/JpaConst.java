@@ -62,9 +62,9 @@ public interface JpaConst {
     String JPQL_PARM_NAME = "name"; // 名前
 
  // NamedQueryのnameとquery
-    // 全てのユーザーをidの降順に取得する
+    // 全てのユーザーをidの昇順に取得する
     String Q_USER_GET_ALL = ENTITY_USER + ".getALL"; // name
-    String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id DESC"; //query
+    String Q_USER_GET_ALL_DEF = "SELECT u FROM User AS u ORDER BY u.id"; //query
     // 全てのユーザーの件数を取得する
     String Q_USER_COUNT = ENTITY_USER + ".count";
     String Q_USER_COUNT_DEF = "SELECT COUNT(u) FROM User AS u";
