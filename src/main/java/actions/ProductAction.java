@@ -184,53 +184,53 @@ public class ProductAction extends ActionBase {
             forward(ForwardConst.FW_PRD_EDIT);
         }
     }
-    /**
-     * 更新を行う
-     * @throws ServletException
-     * @throws IOException
-     */
-    public void update() throws ServletException, IOException {
+    /*
+    * 更新を行う
+    * @throws ServletException
+    * @throws IOException
+    */
+   public void update() throws ServletException, IOException {
 
-        //CSRF対策 tokenのチェック
-        if (checkToken()) {
+       //CSRF対策 tokenのチェック
+       if (checkToken()) {
 
-            // idを条件に商品データを取得する
-            ProductView pv = service.findOne(toNumber(getRequestParam(AttributeConst.PRD_ID)));
+           // idを条件に商品データを取得する
+           ProductView pv = service.findOne(toNumber(getRequestParam(AttributeConst.PRD_ID)));
 
-            //入力された商品情報を設定する
-            pv.setName(getRequestParam(AttributeConst.PRD_NAME));
-            pv.setPrice(getRequestParam(AttributeConst.PRD_PRC));
-            pv.setWidth(getRequestParam(AttributeConst.PRD_WIDTH));
-            pv.setDepth(getRequestParam(AttributeConst.PRD_DEPTH));
-            pv.setHeight(getRequestParam(AttributeConst.PRD_HEIGHT));
-            pv.setMaterial(getRequestParam(AttributeConst.PRD_MTRL));
-            pv.setContent(getRequestParam(AttributeConst.PRD_CONTENT));
-            pv.setQuantity(getRequestParam(AttributeConst.PRD_QUANTITY));
-            pv.setObsoleteFlag(toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)));
+           //入力された商品情報を設定する
+           pv.setName(getRequestParam(AttributeConst.PRD_NAME));
+           pv.setPrice(getRequestParam(AttributeConst.PRD_PRC));
+           pv.setWidth(getRequestParam(AttributeConst.PRD_WIDTH));
+           pv.setDepth(getRequestParam(AttributeConst.PRD_DEPTH));
+           pv.setHeight(getRequestParam(AttributeConst.PRD_HEIGHT));
+           pv.setMaterial(getRequestParam(AttributeConst.PRD_MTRL));
+           pv.setContent(getRequestParam(AttributeConst.PRD_CONTENT));
+           pv.setQuantity(getRequestParam(AttributeConst.PRD_QUANTITY));
+           //pv.setObsoleteFlag(toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)));
 
-            // 商品データを更新する
-            List<String> errors = service.update(pv);
+           // 商品データを更新する
+           List<String> errors = service.update(pv);
 
-            if (errors.size() > 0) {
-                // 更新中にエラーが発生した場合
+           if (errors.size() > 0) {
+               // 更新中にエラーが発生した場合
 
-                putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
-                putRequestScope(AttributeConst.PRODUCT, pv); // 入力された商品情報
-                putRequestScope(AttributeConst.ERR, errors); // エラーのリスト
+               putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
+               putRequestScope(AttributeConst.PRODUCT, pv); // 入力された商品情報
+               putRequestScope(AttributeConst.ERR, errors); // エラーのリスト
 
-                // 編集画面を再表示
-                forward(ForwardConst.FW_PRD_EDIT);
-            } else {
-                // 更新中にエラーがなかった場合
+               // 編集画面を再表示
+               forward(ForwardConst.FW_PRD_EDIT);
+           } else {
+               // 更新中にエラーがなかった場合
 
-                // セッションに更新完了のフラッシュメッセージを設定
-                putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
+               // セッションに更新完了のフラッシュメッセージを設定
+               putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
 
-                // 一覧画面にリダイレクト
-                redirect(ForwardConst.ACT_PRD, ForwardConst.CMD_INDEX);
-            }
-        }
-    }
+               // 一覧画面にリダイレクト
+               redirect(ForwardConst.ACT_PRD, ForwardConst.CMD_INDEX);
+           }
+       }
+   }
 
     /**
      * 論理削除を行う

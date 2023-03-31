@@ -14,7 +14,7 @@
 
         <h2>商品詳細 編集ページ</h2>
         <form method="POST"
-            action="<c:url value='?action=${actPrd}&command=${commUpd}' />">
+            action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
 
