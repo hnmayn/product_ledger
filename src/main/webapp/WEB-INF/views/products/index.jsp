@@ -18,12 +18,11 @@
             </div>
         </c:if>
         <h1>商品検索</h1>
-        <form
-            action="http://localhost:8080/product_ledger/&command=index?action=Product&command=index"
-            method="post">
-            <input type="text" name="keyword"> <input type="checkbox"
-                name="delete_all" value="1"> 廃盤を含む <input type="submit"
-                value="検索">
+        <form action="<c:url value='?action=${actPrd}&command=${commIdx}'/>" method="post">
+            <input type="text" name="keyword">
+            <input type="checkbox" name="delete_all" value="1"> 廃盤を含む
+            <input type="hidden" id="page" name="page" value="${page}" />
+            <input type="submit" value="検索">
         </form>
         <h2>商品情報 一覧</h2>
         <table id="product_list">
@@ -71,13 +70,19 @@
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a
-                            href="<c:url value='?action=${actPrd}&command=${commIdx}&page=${i}' />"><c:out
-                                value="${i}" /></a>&nbsp;
+                        <a href="#"
+                            onclick="nextPage(<c:out value='${i}'/>);"><c:out value="${i}"/></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
         </div>
+        <script>
+        // ★JavaScriptを使って、リンクをクリックしたページをhiddenタグにセットして、フォームを送信
+        function nextPage(page){
+            document.getElementById("page").value = page;
+            document.forms[0].submit();
+        }
+        </script>
         <p>
             <a href="<c:url value='?action=${actPrd}&command=${commNew}' />">新規商品の登録</a>
         </p>
