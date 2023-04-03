@@ -54,6 +54,8 @@ public class ProductAction extends ActionBase {
         putRequestScope(AttributeConst.PRD_COUNT, productsCount); // 全ての商品データの件数
         putRequestScope(AttributeConst.PAGE, page); // ページ数
         putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
+        putRequestScope(AttributeConst.PRD_KEYWORD, keyword); // 検索キーワード（商品名）
+        putRequestScope(AttributeConst.PRD_DELETE_ALL, deleteAllFlag); // 検索キーワード（廃版を含むフラグ）
 
         // セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
         String flush = getSessionScope (AttributeConst.FLUSH);

@@ -19,8 +19,8 @@
         </c:if>
         <h1>商品検索</h1>
         <form action="<c:url value='?action=${actPrd}&command=${commIdx}'/>" method="post">
-            <input type="text" name="keyword">
-            <input type="checkbox" name="delete_all" value="1"> 廃盤を含む
+            <input type="text" name="keyword" value="${keyword}">
+            <input type="checkbox" name="delete_all" value="1" <c:if test="${delete_all == 1}"> checked</c:if>> 廃盤を含む
             <input type="hidden" id="page" name="page" value="${page}" />
             <input type="submit" value="検索">
         </form>
