@@ -22,6 +22,7 @@
 1. 以下のURLにアクセスし、ログイン画面が表示されます。<br>
 ``http://localhost:8080/product_ledger/?action=Auth&command=showLogin``
 2. ユーザー名、パスワードを入力し、ログインします。
+(employee number:1, password:1)
 
 ## Authors
 Ayano.Honma
