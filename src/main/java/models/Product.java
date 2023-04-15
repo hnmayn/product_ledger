@@ -127,7 +127,7 @@ public class Product {
     private Integer obsoleteFlag;
 
     /**
-     * 日報を登録したユーザー
+     * 商品を登録したユーザー
      */
     @ManyToOne
     @JoinColumn(name = JpaConst.PRD_COL_USER, nullable = false)

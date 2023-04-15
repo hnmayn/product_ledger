@@ -109,7 +109,7 @@ public class ProductAction extends ActionBase {
                     getRequestParam(AttributeConst.PRD_CONTENT),
                     getRequestParam(AttributeConst.PRD_QUANTITY),
                     toNumber(getRequestParam(AttributeConst.PRD_OBS_FLAG)),
-                    uv, // ログインしているユーザーを、日報作成者として登録する
+                    uv, // ログインしているユーザーを、商品登録作成者として登録する
                     null,
                     null);
 
