@@ -8,7 +8,7 @@
     <c:param name="content">
         <c:if test="${loginError}">
             <div id="flush_error">
-                ユーザー番号かパスワードが間違っています。
+                ユーザー番号かパスワードが間違っています！
             </div>
         </c:if>
         <c:if test="${flush != null}">
