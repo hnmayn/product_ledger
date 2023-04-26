@@ -12,10 +12,10 @@
 ## Dependency
 - Eclipse Java EE 2020-12
 - Taglibs Standerd Impl 1.2.5
-- javax.servlet-api 4.0.1
-- mysql-connector-java 8.0.23
+- Javax.Servlet Api 4.0.1
+- Mysql Connector Java 8.0.23
 - Hibernate 5.4.28
-- javax.servlet.jsp.jstl-api 1.2.1
+- javax Servlet Jsp Jstl Api 1.2.1
 - Lombok 1.18.16
 
 ## Usage
